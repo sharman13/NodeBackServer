@@ -45,7 +45,8 @@ app.post('/delete', (req,res) => {
 })
 
 app.post('/edit', (req, res) => {
-    Products.updateOne({_id: req.body.idToEdit, name: req.body.name, price: req.body.price, description: req.body.description, imageUrl: req.body.imageUrl}).then(doc => res.send("doneedit")).catch(err => res.send("err"))
+    console.log(req.body);
+    Products.updateOne({_id: req.body.idToEdit}, {name: req.body.name, description: req.body.description, price: req.body.price, imageUrl: req.body.imageUrl}).then(doc => res.send("doneedit")).catch(err => res.send("err"))
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
