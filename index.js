@@ -49,4 +49,42 @@ app.post('/edit', (req, res) => {
     Products.updateOne({_id: req.body.idToEdit}, {name: req.body.name, description: req.body.description, price: req.body.price, imageUrl: req.body.imageUrl}).then(doc => res.send("doneedit")).catch(err => res.send("err"))
 })
 
+app.post('/login', (req,res) => {
+  var users = [
+    {
+      username: "sharman",
+      password: "123456",
+      url: "https://testserverforecom.herokuapp.com/"
+    },
+  ];
+  console.log(req.body);
+  var a = false;
+  let newUrl = '';
+  for (let index = 0; index < users.length; index++) {
+      if(req.body.username === users[index].username) {
+          if(req.body.password === users[index].password) {
+            a = true;
+            newUrl = users[index].url
+            break;
+          }
+      }    
+  }
+
+  var data = [
+    {
+      Logged: a,
+      url: newUrl
+    }
+  ];
+
+  if(a === true) {
+    res.send(data);
+  }
+
+  else{
+    res.send("NotAuth");
+  }
+
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
