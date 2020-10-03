@@ -82,7 +82,7 @@ app.post('/login', (req,res) => {
   }
 
   else{
-    res.send("NotAuth");
+    res.send(data);
   }
 
 });
