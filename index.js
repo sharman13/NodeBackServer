@@ -56,6 +56,11 @@ app.post('/login', (req,res) => {
       password: "123456",
       url: "https://testserverforecom.herokuapp.com/"
     },
+    {
+      username: "sweetpop",
+      password: "sweetpop1234",
+      url: "https://thesweetpop.herokuapp.com/"
+    }
   ];
   console.log(req.body);
   var a = false;
